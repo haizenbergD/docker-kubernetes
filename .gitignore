@@ -1,0 +1,7 @@
+##############
+
+# Editor config
+.vscode/
+
+# Node modules
+node_modules/

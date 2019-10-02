@@ -1,2 +1,0 @@
-To run docker conainer with mapped port
-`docker run -d -p 3000:3000  derkachd/nodejs-simple:latest`
