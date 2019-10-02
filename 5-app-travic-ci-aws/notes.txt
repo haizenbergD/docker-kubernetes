@@ -1,0 +1,12 @@
+To build image with specific docker file, we need to:
+docker build -f {Dockerfile.dev}
+
+
+Volumes
+
+docker run -p 3000:3000 -v $(pwd):/app
+
+While using volumes like -v x:x, we are saying that we want to map folder from machine to our docker container.
+In case -v ./x - we are saying that this will be a placeholder, and we should not map it.
+
+docker run -p 3000:3000 -v /app/node_modules  -v $(pwd):/app {IMAGE_ID}
