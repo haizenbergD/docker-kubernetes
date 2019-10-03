@@ -20,6 +20,7 @@ Examples: *docker run busybox echo hi*, *docker run busybox ls*.
 where -i - connect to container terminal, -t - format text*.
 * `docker exec -it {container_id} sh` - connect to container system (full terminal access).
 * `docker run -d -p 3000:3000  {container_id}` - run container or specified port.
+* `docker attach {container_id}` - attach terminal to container stdin.
 
 
 ### Dockerfile notes
@@ -36,3 +37,6 @@ where -i - connect to container terminal, -t - format text*.
 * `docker run -p 3000:3000 -v $(pwd):/{WORKDIR}` - running container with an image. *While using volumes like -v x:x, we are saying that we want to map folder from machine to our docker container.
 In case -v ./x - we are saying that this will be a placeholder, and we should not map it.*
 * `docker run -p 3000:3000 -v /app/node_modules  -v $(pwd):/app {IMAGE_ID}` during run node app node_modules should not be mapped as a volume.
+* In case we need to use several  base images, we can do create a multi step docker file. To do so we need to specificy first step image like `FROM {BASE_IMAGE} as {alias}`.
+Then do required steps for phrase 1. After specify second base image `FROM {SECOND_BASE_IMAGE}` and copy data from 1 image to second `COPY --from=builder /app/build /usr/share/nginx/html`
+Example can be found in `/docker-kubernetes/app-travic-ci-aws/Dockerfile`

@@ -9,3 +9,12 @@ services:
     volumes: 
       - /app/node_modules
       - ./src:/app/src
+  # Service to run test
+  node-app-test:
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    volumes:
+      - /app/node_modules
+      - ./src:/app/src
+    command: ["npm", "run", "test"]
