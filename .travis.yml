@@ -1,0 +1,10 @@
+# In case of using Docker we need to have super user permissions
+sudo: required
+services:
+  - docker
+
+before_install:
+  - cd ./app-travis-ci-aws && docker build -t denysderkach/app-travis-ci-aws -f Dockerfile.dev .
+
+script:
+  - cd ./app-travis-ci-aws && docker run -e CI=true denysderkach/app-travis-ci-aws:latest npm run test
