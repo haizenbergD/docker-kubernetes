@@ -8,5 +8,4 @@ before_install:
   - docker build -t denysderkach/app-travis-ci-aws -f Dockerfile.dev .
 
 script:
-  - cd ./app-travis-ci-aws
   - docker run -e CI=true denysderkach/app-travis-ci-aws:latest npm run test
